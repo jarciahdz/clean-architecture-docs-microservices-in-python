@@ -1,0 +1,71 @@
+site_name: "Documentación de Microservicios con Clean Architecture"
+site_url: "https://github.com/jarciahdz/clean-architecture-docs-microservices-in-python"
+theme:
+  name: 'material'
+  language: 'es'
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - toc.integrate
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.annotation
+    - content.code.copy
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/lightbulb-outline
+        name: Cambiar a modo oscuro
+      primary: '#0055A5'  # Azul Bancolombia
+      accent: '#FFCC00'   # Amarillo Bancolombia
+    - scheme: slate
+      toggle:
+        icon: material/lightbulb
+        name: Cambiar a modo claro
+      primary: '#0055A5'  # Azul Bancolombia
+      accent: '#FFCC00'   # Amarillo Bancolombia
+plugins:
+  - search
+extra:
+  social:
+    - icon: fontawesome/brands/github-alt
+      link: https://github.com/jarciahdz
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/jarciahdz/
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - admonition
+  - pymdownx.arithmatex:
+      generic: true
+  - footnotes
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.mark
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+copyright: |
+  &copy; 2024 <a href="https://github.com/jarciahdz" target="_blank" rel="noopener">Jesus Arcia Hernandez</a>
+
+nav:
+  - Inicio: index.md
+  - Introducción: intro.md
+  - Estructura del Proyecto: estructura.md
+  - Capas:
+      - Dominio: capas/dominio.md
+      - Aplicación: capas/aplicacion.md
+      - Infraestructura: capas/infraestructura.md
+      - Presentación: capas/presentacion.md
+  - Configuración del Entorno: configuracion.md
+  - Pruebas: pruebas.md
+  - CI/CD: cicd.md
+  - Despliegue en la Nube: despliegue.md
+  - Conclusión: conclusion.md
