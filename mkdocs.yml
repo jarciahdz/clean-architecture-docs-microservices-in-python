@@ -1,4 +1,4 @@
-site_name: "Documentación de Microservicios con Clean Architecture"
+site_name: "Plantilla de Arquitectura Limpia en Python para el Desarrollo de Microservicios en la Nube"
 site_url: "https://github.com/jarciahdz/clean-architecture-docs-microservices-in-python"
 theme:
   name: 'material'
