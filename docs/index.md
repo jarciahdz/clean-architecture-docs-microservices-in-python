@@ -50,7 +50,3 @@ Para comenzar a utilizar este scaffolding y entender cómo se estructura el proy
 ## Contribuciones
 
 Este proyecto es de código abierto y agradecemos las contribuciones de la comunidad. Si deseas colaborar, por favor revisa las pautas en `CONTRIBUTING.md` y envía tus pull requests o reporta issues en el repositorio oficial.
-
----
-
-© 2024 Línea De Conocimientos Machine Learning E Inteligencia Artificial- BANCOLOMBIA.

@@ -79,7 +79,3 @@ class ExternalService:
 - [Aplicación](presentacion.md)
 - [Infraestructura](infraestructura.md)
 - [Presentación](presentacion.md)
-
----
-
-© 2024 Línea De Conocimientos Machine Learning E Inteligencia Artificial- BANCOLOMBIA.

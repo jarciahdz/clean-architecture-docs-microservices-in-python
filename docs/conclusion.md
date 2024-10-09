@@ -20,4 +20,3 @@ Este scaffolding no solo sirve como punto de partida para proyectos actuales, si
 - **Monitoreo y Observabilidad**: Integrar soluciones de monitoreo y logging avanzadas para obtener visibilidad en tiempo real del comportamiento de la aplicación en producción.
 - **Seguridad**: Fortalecer la seguridad en todas las capas, incluyendo prácticas como el análisis de vulnerabilidades y la gestión de secretos más robusta.
 
----

@@ -132,4 +132,3 @@ Gestiona la interacción con el usuario o cliente. Incluye controladores y confi
 
 Para profundizar en la implementación de cada capa y entender cómo interactúan entre sí, consulte la sección [Capas](index.md#capas). Se proporcionan detalles y ejemplos específicos para guiar el desarrollo y personalización del microservicio.
 
----

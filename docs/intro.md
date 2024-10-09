@@ -22,4 +22,3 @@ Este proyecto proporciona un scaffolding para desarrollar microservicios en Pyth
 
 La comprensión profunda de estos conceptos es esencial para aprovechar al máximo las ventajas que ofrece esta arquitectura. Se recomienda continuar con la lectura de la [Estructura del Proyecto](estructura.md) para familiarizarse con la organización y componentes específicos de este scaffolding.
 
----
