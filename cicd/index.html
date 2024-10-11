@@ -1,0 +1,1297 @@
+
+<!doctype html>
+<html lang="es" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://github.com/jarciahdz/clean-architecture-docs-microservices-in-python/cicd/">
+      
+      
+        <link rel="prev" href="../pruebas/">
+      
+      
+        <link rel="next" href="../despliegue/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.40">
+    
+    
+      
+        <title>CI/CD - Plantilla de Arquitectura Limpia en Python para el Desarrollo de Microservicios en la Nube</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.8c3ca2c6.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#0055A5" data-md-color-accent="#FFCC00">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#integracion-continua-y-despliegue-continuo-cicd" class="md-skip">
+          Saltar a contenido
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Cabecera">
+    <a href=".." title="Plantilla de Arquitectura Limpia en Python para el Desarrollo de Microservicios en la Nube" class="md-header__button md-logo" aria-label="Plantilla de Arquitectura Limpia en Python para el Desarrollo de Microservicios en la Nube" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Plantilla de Arquitectura Limpia en Python para el Desarrollo de Microservicios en la Nube
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              CI/CD
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="#0055A5" data-md-color-accent="#FFCC00"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="#0055A5" data-md-color-accent="#FFCC00"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Búsqueda" placeholder="Búsqueda" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Buscar">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Limpiar" aria-label="Limpiar" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicializando búsqueda
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Pestañas" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../intro/" class="md-tabs__link">
+        
+  
+    
+  
+  Introducción
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../estructura/" class="md-tabs__link">
+        
+  
+    
+  
+  Estructura del Proyecto
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../capas/dominio/" class="md-tabs__link">
+          
+  
+  Capas
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../configuracion/" class="md-tabs__link">
+        
+  
+    
+  
+  Configuración del Entorno
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../pruebas/" class="md-tabs__link">
+        
+  
+    
+  
+  Pruebas
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  CI/CD
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../despliegue/" class="md-tabs__link">
+        
+  
+    
+  
+  Despliegue en la Nube
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../conclusion/" class="md-tabs__link">
+        
+  
+    
+  
+  Conclusión
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navegación" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Plantilla de Arquitectura Limpia en Python para el Desarrollo de Microservicios en la Nube" class="md-nav__button md-logo" aria-label="Plantilla de Arquitectura Limpia en Python para el Desarrollo de Microservicios en la Nube" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Plantilla de Arquitectura Limpia en Python para el Desarrollo de Microservicios en la Nube
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inicio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introducción
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../estructura/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Estructura del Proyecto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Capas
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Capas
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../capas/dominio/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Dominio
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../capas/aplicacion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Aplicación
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../capas/infraestructura/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Infraestructura
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../capas/presentacion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Presentación
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuracion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Configuración del Entorno
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pruebas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Pruebas
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    CI/CD
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    CI/CD
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Tabla de contenidos">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Tabla de contenidos
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configuracion-de-azure-devops" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración de Azure DevOps
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuración de Azure DevOps">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-creacion-del-proyecto-en-azure-devops" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Creación del Proyecto en Azure DevOps
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-repositorio-de-codigo-fuente" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Repositorio de Código Fuente
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracion-de-la-canalizacion-de-integracion-continua-ci" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración de la Canalización de Integración Continua (CI)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuración de la Canalización de Integración Continua (CI)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-creacion-de-la-canalizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Creación de la Canalización
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-definicion-del-archivo-azure-pipelinesyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Definición del Archivo azure-pipelines.yml
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explicacion-de-la-canalizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Explicación de la Canalización
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-configuracion-de-variables-de-entorno" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Configuración de Variables de Entorno
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuracion-de-la-canalizacion-de-despliegue-continuo-cd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración de la Canalización de Despliegue Continuo (CD)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuración de la Canalización de Despliegue Continuo (CD)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-creacion-de-una-release-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Creación de una Release Pipeline
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-definicion-de-las-etapas-de-despliegue" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Definición de las Etapas de Despliegue
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-configuracion-de-tareas-de-despliegue" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Configuración de Tareas de Despliegue
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Configuración de Tareas de Despliegue">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#despliegue-en-azure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Despliegue en Azure
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Despliegue en Azure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-de-tarea-de-despliegue-en-azure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplo de Tarea de Despliegue en Azure
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-configuracion-de-gates-y-aprobaciones" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Configuración de Gates y Aprobaciones
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Configuración de Gates y Aprobaciones">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#despliegue-en-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      Despliegue en AWS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Despliegue en AWS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuracion-de-credenciales-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuración de Credenciales AWS
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ejemplo-de-tarea-de-despliegue-en-aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ejemplo de Tarea de Despliegue en AWS
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integracion-con-azure-key-vault" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integración con Azure Key Vault
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integración con Azure Key Vault">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#integracion-con-azure-key-vault_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integración con Azure Key Vault
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Integración con Azure Key Vault">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uso-en-la-canalizacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uso en la Canalización
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#buenas-practicas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Buenas Prácticas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recursos-adicionales" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recursos Adicionales
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../despliegue/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Despliegue en la Nube
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conclusion/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Conclusión
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="integracion-continua-y-despliegue-continuo-cicd">Integración Continua y Despliegue Continuo (CI/CD)</h1>
+<p>La implementación de una estrategia robusta de <strong>Integración Continua (CI)</strong> y <strong>Despliegue Continuo (CD)</strong> es esencial para garantizar la calidad, confiabilidad y eficiencia en el ciclo de vida del desarrollo de software. Este proyecto utiliza <strong>Azure DevOps</strong> como plataforma principal para orquestar las canalizaciones de CI/CD, y considera despliegues tanto en <strong>Azure</strong> como en <strong>AWS</strong> para aprovechar las fortalezas de ambas nubes.</p>
+<h2 id="configuracion-de-azure-devops">Configuración de Azure DevOps</h2>
+<h3 id="1-creacion-del-proyecto-en-azure-devops">1. Creación del Proyecto en Azure DevOps</h3>
+<ul>
+<li>Acceda al portal de <a href="https://dev.azure.com/">Azure DevOps</a> y autentíquese con sus credenciales.</li>
+<li>Cree una nueva organización o utilice una existente.</li>
+<li>Genere un nuevo proyecto seleccionando <strong>"Crear proyecto"</strong> y proporcionando un nombre y descripción adecuados.</li>
+</ul>
+<h3 id="2-repositorio-de-codigo-fuente">2. Repositorio de Código Fuente</h3>
+<ul>
+<li>Importe el código fuente del proyecto al repositorio Git integrado en Azure DevOps o enlace un repositorio externo, como GitHub.</li>
+<li>Verifique que la estructura del proyecto y todos los archivos necesarios (por ejemplo, <code>Dockerfile</code>, <code>docker-compose.yml</code>, <code>requirements.txt</code>, etc.) estén presentes en el repositorio.</li>
+</ul>
+<h2 id="configuracion-de-la-canalizacion-de-integracion-continua-ci">Configuración de la Canalización de Integración Continua (CI)</h2>
+<p>La canalización de CI automatiza la construcción y las pruebas del código cada vez que se produce un cambio en el repositorio.</p>
+<h3 id="1-creacion-de-la-canalizacion">1. Creación de la Canalización</h3>
+<ul>
+<li>Navegue a la sección <strong>"Pipelines"</strong> en Azure DevOps y seleccione <strong>"Crear Pipeline"</strong>.</li>
+<li>Seleccione el repositorio que contiene el código fuente.</li>
+<li>Opte por <strong>"Inicio rápido"</strong> para utilizar una plantilla básica o elija <strong>"Archivo YAML"</strong> para definir la canalización mediante un archivo <code>azure-pipelines.yml</code>.</li>
+</ul>
+<h3 id="2-definicion-del-archivo-azure-pipelinesyml">2. Definición del Archivo <code>azure-pipelines.yml</code></h3>
+<p>Cree un archivo llamado <code>azure-pipelines.yml</code> en la raíz del proyecto con el siguiente contenido:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># azure-pipelines.yml</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">trigger</span><span class="p">:</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">  </span><span class="nt">branches</span><span class="p">:</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="nt">include</span><span class="p">:</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">develop</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nt">pool</span><span class="p">:</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="nt">vmImage</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;ubuntu-latest&#39;</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="nt">variables</span><span class="p">:</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">  </span><span class="nt">PYTHON_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;3.9&#39;</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="nt">steps</span><span class="p">:</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">task</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UsePythonVersion@0</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="nt">inputs</span><span class="p">:</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">      </span><span class="nt">versionSpec</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;$(PYTHON_VERSION)&#39;</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Configurar</span><span class="nv"> </span><span class="s">Python</span><span class="nv"> </span><span class="s">$(PYTHON_VERSION)&#39;</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">      </span><span class="no">python -m pip install --upgrade pip</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">      </span><span class="no">pip install -r requirements.txt</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Instalar</span><span class="nv"> </span><span class="s">dependencias&#39;</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">script</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">      </span><span class="no">pytest tests/ --junitxml=test-results.xml</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Ejecutar</span><span class="nv"> </span><span class="s">pruebas&#39;</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">task</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PublishTestResults@2</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">    </span><span class="nt">inputs</span><span class="p">:</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">      </span><span class="nt">testResultsFormat</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;JUnit&#39;</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">      </span><span class="nt">testResultsFiles</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;**/test-results.xml&#39;</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Publicar</span><span class="nv"> </span><span class="s">resultados</span><span class="nv"> </span><span class="s">de</span><span class="nv"> </span><span class="s">pruebas&#39;</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">task</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PublishBuildArtifacts@1</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">    </span><span class="nt">inputs</span><span class="p">:</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">      </span><span class="nt">pathToPublish</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;$(System.DefaultWorkingDirectory)&#39;</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="w">      </span><span class="nt">artifactName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;drop&#39;</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Publicar</span><span class="nv"> </span><span class="s">artefactos</span><span class="nv"> </span><span class="s">de</span><span class="nv"> </span><span class="s">compilación&#39;</span>
+</code></pre></div>
+<h3 id="explicacion-de-la-canalizacion">Explicación de la Canalización</h3>
+<ul>
+<li><strong>trigger</strong>: Configura la canalización para que se ejecute en las ramas especificadas (main y develop).</li>
+<li><strong>pool</strong>: Especifica el agente de compilación a utilizar (ubuntu-latest).</li>
+<li><strong>variables</strong>: Define variables globales, como la versión de Python.</li>
+<li><strong>steps</strong>: Lista de tareas a ejecutar:<ul>
+<li><strong>UsePythonVersion</strong>: Configura la versión de Python en el agente.</li>
+<li><strong>Instalar dependencias</strong>: Actualiza pip e instala las dependencias del proyecto.</li>
+<li><strong>Ejecutar pruebas</strong>: Ejecuta las pruebas utilizando pytest y genera un archivo de resultados en formato JUnit.</li>
+<li><strong>Publicar resultados de pruebas</strong>: Publica los resultados para que puedan ser visualizados en Azure DevOps.</li>
+<li><strong>Publicar artefactos de compilación</strong>: Guarda los artefactos generados durante la compilación para su uso posterior en la canalización de CD.</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-configuracion-de-variables-de-entorno">3. Configuración de Variables de Entorno</h3>
+<p>En la sección de variables de la canalización, configure las variables necesarias, como credenciales o configuraciones específicas del entorno.
+Utilice variables secretas para manejar información sensible, asegurándose de que estén protegidas y no se expongan en los logs.</p>
+<h2 id="configuracion-de-la-canalizacion-de-despliegue-continuo-cd">Configuración de la Canalización de Despliegue Continuo (CD)</h2>
+<p>La canalización de CD automatiza el proceso de despliegue de la aplicación a los entornos correspondientes (desarrollo, pruebas, producción).</p>
+<h3 id="1-creacion-de-una-release-pipeline">1. Creación de una Release Pipeline</h3>
+<p>Navegue a la sección "Releases" en Azure DevOps y seleccione "Nueva canalización".
+Elija "Empty Job" para comenzar desde cero o seleccione una plantilla según sus necesidades.</p>
+<h3 id="2-definicion-de-las-etapas-de-despliegue">2. Definición de las Etapas de Despliegue</h3>
+<ul>
+<li><strong>Desarrollo</strong>: Primera etapa donde se despliega la aplicación en un entorno de desarrollo para pruebas iniciales.</li>
+<li><strong>Pruebas</strong>: Etapa donde se realizan pruebas más exhaustivas, incluyendo pruebas de integración y aceptación.</li>
+<li><strong>Producción</strong>: Etapa final donde la aplicación se despliega al entorno de producción.</li>
+</ul>
+<h3 id="3-configuracion-de-tareas-de-despliegue">3. Configuración de Tareas de Despliegue</h3>
+<p>En esta sección se abordará la configuración de las tareas de despliegue para ambos entornos en la nube: Azure y AWS.</p>
+<h4 id="despliegue-en-azure">Despliegue en Azure</h4>
+<p>Para desplegar la aplicación en Azure, se utilizarán servicios como Azure Container Instances (ACI) o Azure Kubernetes Service (AKS), dependiendo de las necesidades.</p>
+<h5 id="ejemplo-de-tarea-de-despliegue-en-azure">Ejemplo de Tarea de Despliegue en Azure</h5>
+<h3 id="4-configuracion-de-gates-y-aprobaciones">4. Configuración de Gates y Aprobaciones</h3>
+<p>Establezca gates y aprobaciones manuales entre las etapas para controlar el flujo de despliegue.
+Configure notificaciones para informar a los equipos relevantes sobre el progreso y estado de los despliegues.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">task</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AzureCLI@2</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">inputs</span><span class="p">:</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nt">azureSubscription</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Conexión</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">Azure&#39;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="nt">scriptType</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;bash&#39;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="nt">scriptLocation</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;inlineScript&#39;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="nt">inlineScript</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">      </span><span class="no"># Configuración de variables</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">      </span><span class="no">IMAGE_NAME=your_microservice</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">      </span><span class="no">IMAGE_TAG=$(Build.BuildId)</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">      </span><span class="no">ACR_NAME=youracrname</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">      </span><span class="no">RESOURCE_GROUP=your-resource-group</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">      </span><span class="no">CONTAINER_GROUP=your-container-group</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">      </span><span class="no"># Inicio de sesión en ACR</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">      </span><span class="no">az acr login --name $ACR_NAME</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">      </span><span class="no"># Construcción y etiquetado de la imagen</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">      </span><span class="no">docker build -t $ACR_NAME.azurecr.io/$IMAGE_NAME:$IMAGE_TAG .</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">      </span><span class="no"># Envío de la imagen a ACR</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">      </span><span class="no">docker push $ACR_NAME.azurecr.io/$IMAGE_NAME:$IMAGE_TAG</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">      </span><span class="no"># Despliegue en ACI</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">      </span><span class="no">az container create \</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">        </span><span class="no">--resource-group $RESOURCE_GROUP \</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">        </span><span class="no">--name $CONTAINER_GROUP \</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">        </span><span class="no">--image $ACR_NAME.azurecr.io/$IMAGE_NAME:$IMAGE_TAG \</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">        </span><span class="no">--registry-login-server $ACR_NAME.azurecr.io \</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">        </span><span class="no">--registry-username $(ACR_USERNAME) \</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="w">        </span><span class="no">--registry-password $(ACR_PASSWORD) \</span>
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="w">        </span><span class="no">--dns-name-label your-dns-label \</span>
+<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="w">        </span><span class="no">--ports 8080</span>
+<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="w">  </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Desplegar</span><span class="nv"> </span><span class="s">en</span><span class="nv"> </span><span class="s">Azure</span><span class="nv"> </span><span class="s">Container</span><span class="nv"> </span><span class="s">Instances&#39;</span>
+</code></pre></div></p>
+<h4 id="despliegue-en-aws">Despliegue en AWS</h4>
+<p>Para el despliegue en AWS, se pueden utilizar servicios como Amazon Elastic Container Service (ECS) o Amazon Elastic Kubernetes Service (EKS).</p>
+<h5 id="configuracion-de-credenciales-aws">Configuración de Credenciales AWS</h5>
+<p>Antes de ejecutar tareas en AWS, es necesario configurar las credenciales de acceso. Esto se puede hacer mediante variables de entorno o utilizando el servicio de Azure Key Vault para almacenar secretos.</p>
+<h5 id="ejemplo-de-tarea-de-despliegue-en-aws">Ejemplo de Tarea de Despliegue en AWS</h5>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">task</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWSCLI@1</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">inputs</span><span class="p">:</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nt">awsCredentials</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Conexión</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">AWS&#39;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="nt">awsRegionName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;us-east-1&#39;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="nt">scriptType</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;inline&#39;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="nt">inlineScript</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">      </span><span class="no"># Configuración de variables</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">      </span><span class="no">IMAGE_NAME=your_microservice</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">      </span><span class="no">IMAGE_TAG=$(Build.BuildId)</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">      </span><span class="no">AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">      </span><span class="no">ECR_REPO_NAME=your-ecr-repo</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">      </span><span class="no"># Inicio de sesión en ECR</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">      </span><span class="no">aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">      </span><span class="no"># Construcción y etiquetado de la imagen</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">      </span><span class="no">docker build -t $IMAGE_NAME .</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">      </span><span class="no"># Etiquetado de la imagen para ECR</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">      </span><span class="no">docker tag $IMAGE_NAME:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO_NAME:$IMAGE_TAG</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">      </span><span class="no"># Envío de la imagen a ECR</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">      </span><span class="no">docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$ECR_REPO_NAME:$IMAGE_TAG</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">      </span><span class="no"># Despliegue en ECS o EKS (se requiere configuración adicional)</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">      </span><span class="no"># Por ejemplo, actualizar una tarea de ECS con la nueva imagen</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">  </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Desplegar</span><span class="nv"> </span><span class="s">en</span><span class="nv"> </span><span class="s">AWS</span><span class="nv"> </span><span class="s">Elastic</span><span class="nv"> </span><span class="s">Container</span><span class="nv"> </span><span class="s">Service&#39;</span>
+</code></pre></div>
+<h2 id="integracion-con-azure-key-vault">Integración con Azure Key Vault</h2>
+<h3 id="integracion-con-azure-key-vault_1">Integración con Azure Key Vault</h3>
+<p>Para manejar de forma segura las credenciales y secretos necesarios durante el proceso de despliegue, se integra Azure Key Vault en las canalizaciones.</p>
+<p>Configuración de Azure Key Vault
+- Cree un Azure Key Vault en su suscripción de Azure.
+- Agregue los secretos necesarios, como contraseñas, claves de API y otras credenciales sensibles.
+- Configure las políticas de acceso para permitir que Azure DevOps Pipeline acceda al Key Vault.</p>
+<h4 id="uso-en-la-canalizacion">Uso en la Canalización</h4>
+<p>Agregue una tarea en el azure-pipelines.yml para obtener los secretos del Key Vault:</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">task</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AzureKeyVault@2</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nt">inputs</span><span class="p">:</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nt">azureSubscription</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Conexión</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">Azure&#39;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="nt">KeyVaultName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;your-key-vault-name&#39;</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="nt">SecretsFilter</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;*&#39;</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="nt">RunAsPreJob</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Descargar</span><span class="nv"> </span><span class="s">secretos</span><span class="nv"> </span><span class="s">desde</span><span class="nv"> </span><span class="s">Azure</span><span class="nv"> </span><span class="s">Key</span><span class="nv"> </span><span class="s">Vault&#39;</span>
+</code></pre></div>
+Con esta configuración, los secretos estarán disponibles como variables en la canalización y pueden ser utilizados en los scripts de despliegue.</p>
+<h2 id="buenas-practicas">Buenas Prácticas</h2>
+<ul>
+<li><strong>Versionado Semántico</strong>: Utilice un esquema de versionado consistente para las builds y despliegues.</li>
+<li><strong>Principio de Menor Privilegio</strong>: Configure los permisos de acceso de las canalizaciones y servicios con el mínimo necesario.</li>
+<li><strong>Validación en Pull Requests</strong>: Configure políticas de rama que requieran la aprobación y el paso de las pruebas antes de fusionar cambios.</li>
+<li><strong>Despliegue Azul-Verde o Canary</strong>: Considere estrategias avanzadas de despliegue para minimizar el impacto en producción.</li>
+<li><strong>Seguridad de Credenciales</strong>: Nunca almacene credenciales sensibles en texto plano o en el repositorio de código. Utilice servicios como Azure Key Vault o AWS Secrets Manager.</li>
+<li><strong>Automatización Completa</strong>: Busque que el proceso de CI/CD sea completamente automatizado, reduciendo la intervención manual y minimizando errores.</li>
+<li><strong>Monitoreo y Alertas</strong>: Integre servicios de monitoreo como Azure Monitor o AWS CloudWatch para supervisar el rendimiento y estado de la aplicación después del despliegue.</li>
+<li><strong>Despliegue Multinube</strong>: Al considerar despliegues en Azure y AWS, asegúrese de que su aplicación y procesos sean compatibles con ambos entornos, adoptando prácticas de infraestructura como código cuando sea posible.</li>
+<li><strong>Infraestructura como Código</strong>: Utilice herramientas como Terraform o Azure Resource Manager (ARM) Templates para definir y gestionar la infraestructura de forma declarativa.</li>
+</ul>
+<h2 id="recursos-adicionales">Recursos Adicionales</h2>
+<ul>
+<li><a href="https://learn.microsoft.com/es-es/azure/devops/?view=azure-devops">Documentación de Azure DevOps</a></li>
+<li><a href="https://learn.microsoft.com/en-us/azure/devops/pipelines/architectures/devops-pipelines-baseline-architecture?view=azure-devops">Prácticas recomendadas para CI/CD en Azure</a></li>
+<li><a href="https://learn.microsoft.com/en-us/azure/devops/pipelines/release/azure-key-vault?view=azure-devops&amp;tabs=classic">Integración de Azure Key Vault con Azure DevOps</a></li>
+<li><a href="https://docs.aws.amazon.com/ecs/">Despliegue de Contenedores en AWS</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Volver al principio
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2024 <a href="https://github.com/jarciahdz" target="_blank" rel="noopener">Línea De Conocimientos Machine Learning E Inteligencia Artificial- BANCOLOMBIA.</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/jarciahdz" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/jarciahdz/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.sections", "toc.integrate", "navigation.top", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiado al portapapeles", "clipboard.copy": "Copiar al portapapeles", "search.result.more.one": "1 m\u00e1s en esta p\u00e1gina", "search.result.more.other": "# m\u00e1s en esta p\u00e1gina", "search.result.none": "No se encontraron documentos", "search.result.one": "1 documento encontrado", "search.result.other": "# documentos encontrados", "search.result.placeholder": "Teclee para comenzar b\u00fasqueda", "search.result.term.missing": "Falta", "select.version": "Seleccionar versi\u00f3n"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.525ec568.min.js"></script>
+      
+    
+  </body>
+</html>
