@@ -1,3 +1,8 @@
+---
+sidebar_position: 2
+sidebar_label: Aplicación
+---
+
 # Capa de Aplicación
 
 La **Capa de Aplicación** actúa como orquestadora de los casos de uso y coordina la interacción entre la capa de dominio y las demás capas del sistema. Su principal objetivo es implementar la lógica específica de la aplicación sin incorporar detalles de infraestructura o presentación.
@@ -32,6 +37,7 @@ app/
 ### Caso de Uso
 
 #### your_use_case.py
+
 ```python
 
 class YourUseCase:
@@ -64,8 +70,8 @@ class YourUseCase:
 
 - **Flexibilidad**: Permite modificar flujos de trabajo sin afectar las capas de dominio o infraestructura.
 
-
 ## Capas
+
 - [Dominio](dominio.md)
 - [Aplicación](presentacion.md)
 - [Infraestructura](infraestructura.md)

@@ -1,0 +1,8 @@
+{
+  "label": "Capas",
+  "position": 4,
+  "link": {
+    "type": "generated-index",
+    "description": "La arquitectura se divide en cuatro capas principales, cada una con responsabilidades específicas y bien definidas:"
+  }
+}

@@ -1,3 +1,8 @@
+---
+sidebar_position: 3
+sidebar_label: Estructura del proyecto
+---
+
 # Estructura del Proyecto
 
 Este documento describe detalladamente la estructura organizativa del proyecto, diseñada para adherirse a los principios de la **Arquitectura Limpia** y facilitar el desarrollo de microservicios escalables y mantenibles en Python.
@@ -6,8 +11,7 @@ Este documento describe detalladamente la estructura organizativa del proyecto, 
 
 El proyecto está organizado en una jerarquía de directorios que refleja las capas definidas por la Arquitectura Limpia. A continuación se presenta la estructura general del proyecto:
 
-
-```
+```bash
 your_microservice/
 ├── app/
 │   ├── domain/
@@ -131,4 +135,3 @@ Gestiona la interacción con el usuario o cliente. Incluye controladores y confi
 ## Próximos Pasos
 
 Para profundizar en la implementación de cada capa y entender cómo interactúan entre sí, consulte la sección [Capas](index.md#capas). Se proporcionan detalles y ejemplos específicos para guiar el desarrollo y personalización del microservicio.
-

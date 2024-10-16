@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Introducción
 
 La **Arquitectura Limpia** es un enfoque de diseño de software propuesto por Robert C. Martin, también conocido como "Uncle Bob". Este paradigma busca crear sistemas que sean:
@@ -21,4 +25,3 @@ Este proyecto proporciona un scaffolding para desarrollar microservicios en Pyth
 - **Proporcionar una visión general** de cómo está estructurado este scaffolding y cómo puede ser utilizado como base para proyectos futuros.
 
 La comprensión profunda de estos conceptos es esencial para aprovechar al máximo las ventajas que ofrece esta arquitectura. Se recomienda continuar con la lectura de la [Estructura del Proyecto](estructura.md) para familiarizarse con la organización y componentes específicos de este scaffolding.
-

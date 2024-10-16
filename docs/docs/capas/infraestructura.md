@@ -1,3 +1,8 @@
+---
+sidebar_position: 3
+sidebar_label: Infraestructura
+---
+
 # Capa de Infraestructura
 
 La **Capa de Infraestructura** proporciona implementaciones concretas para las interfaces definidas en las capas superiores, manejando detalles técnicos y de comunicación con sistemas externos. Esta capa es donde se integra la aplicación con tecnologías específicas, como bases de datos, servicios web, sistemas de mensajería, entre otros.
@@ -30,7 +35,8 @@ app/
 ```
 
 ## Ejemplo
-#### your_repository_impl.py
+
+### your_repository_impl.py
 
 ```python
 from app.domain.repositories.your_repository_interface import YourRepositoryInterface
@@ -51,8 +57,10 @@ class YourRepositoryImpl(YourRepositoryInterface):
         self.db_connection.execute("INSERT INTO entities (...) VALUES (...)", entity.to_dict())
 ```
 
-### Servicio Externo
-#### external_service.py
+## Servicio Externo
+
+### external_service.py
+
 ```python
 
 class ExternalService:
@@ -73,8 +81,8 @@ class ExternalService:
 
 - **Responsabilidad Clara**: Centraliza el manejo de detalles técnicos, lo que simplifica el mantenimiento y la resolución de problemas.
 
-
 ## Capas
+
 - [Dominio](dominio.md)
 - [Aplicación](presentacion.md)
 - [Infraestructura](infraestructura.md)

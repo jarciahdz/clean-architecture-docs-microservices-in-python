@@ -1,3 +1,8 @@
+---
+sidebar_position: 1
+sidebar_label: Dominio
+---
+
 # Capa de Dominio
 
 La **Capa de Dominio** es el núcleo central de la arquitectura y representa las reglas de negocio y las entidades fundamentales del sistema. Esta capa es completamente independiente de detalles de implementación externos, como frameworks, bases de datos o interfaces de usuario, lo que garantiza que los cambios en esas áreas no afecten la lógica esencial de la aplicación.
@@ -73,11 +78,9 @@ class YourRepositoryInterface(ABC):
 
 - **Claridad Conceptual**: Facilita la comprensión del dominio del problema al estar aislado y bien definido.
 
-
 ## Capas
+
 - [Dominio](dominio.md)
 - [Aplicación](presentacion.md)
 - [Infraestructura](infraestructura.md)
 - [Presentación](presentacion.md)
-
-

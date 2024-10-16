@@ -1,3 +1,8 @@
+---
+sidebar_position: 5
+sidebar_label: Configuración del entorno
+---
+
 # Configuración del Entorno
 
 Para garantizar un entorno de desarrollo consistente y facilitar la implementación y despliegue del microservicio, es esencial configurar adecuadamente el entorno. Esta sección proporciona instrucciones detalladas para preparar el entorno de desarrollo, incluyendo la instalación de dependencias, configuración de variables de entorno y uso de contenedores.
@@ -16,6 +21,7 @@ Es recomendable utilizar un entorno virtual para aislar las dependencias del pro
 ### Creación de un Entorno Virtual
 
 ### venv
+
 ```bash
 
 # Crear un entorno virtual
@@ -29,6 +35,7 @@ venv\Scripts\activate
 ```
 
 ### virtualenv
+
 ```bash
 # Instalar virtualenv si no lo tiene instalado
 pip install virtualenv
@@ -44,6 +51,7 @@ venv\Scripts\activate
 ```
 
 ## Instalación de Paquetes
+
 Con el entorno virtual activado, instale las dependencias listadas en requirements.txt:
 
 ```bash
@@ -55,6 +63,7 @@ pip install -r requirements.txt
 Las variables de entorno permiten configurar parámetros sin alterar el código fuente. Cree un archivo .env en la raíz del proyecto para definir variables sensibles o específicas del entorno.
 
 ### Ejemplo de Archivo .env
+
 ```env
 # Configuración de la base de datos
 DB_HOST=localhost
@@ -73,9 +82,11 @@ LOG_LEVEL=DEBUG
 Asegúrese de que el archivo .env esté incluido en el archivo .gitignore para evitar subir información sensible al repositorio.
 
 ## Configuración de Logging
+
 El archivo config/logging.conf contiene la configuración para el sistema de logging de la aplicación. Ajuste los parámetros según las necesidades de monitoreo y depuración.
 
 ### Estructura de logging.conf
+
 ```ini
 [loggers]
 keys=root,app
@@ -118,16 +129,19 @@ datefmt=
 Para facilitar la ejecución y despliegue de la aplicación en diferentes entornos, puede utilizar Docker para contenerizar el microservicio.
 
 ### Construcción de la Imagen Docker
+
 ```bash
 docker build -t your_microservice:latest .
 ```
 
 ### Ejecución del Contenedor
+
 ```bash
 docker run -d -p 8080:8080 --env-file .env your_microservice:latest
 ```
 
 ## Uso de Docker Compose
+
 Si su aplicación depende de otros servicios (por ejemplo, una base de datos), puede utilizar docker-compose.yml para orquestar múltiples contenedores.yaml
 
 ```yaml
@@ -158,9 +172,11 @@ docker-compose up -d
 ```
 
 ## Configuración del Archivo settings.py
+
 El archivo config/settings.py centraliza la configuración de la aplicación, leyendo variables de entorno y proporcionando valores predeterminados cuando sea necesario.
 
 ### Ejemplo de settings.py
+
 ```python
 import os
 from dotenv import load_dotenv
@@ -186,6 +202,7 @@ settings = Settings()
 ```
 
 ## Recomendaciones Adicionales
+
 - **Mantenga las Dependencias Actualizadas**: Revise periódicamente el archivo requirements.txt y actualice los paquetes para incluir parches de seguridad y mejoras.
 - **Seguridad de Variables Sensibles**: No comparta archivos que contengan información sensible y utilice herramientas como Vault o servicios de gestión de secretos para entornos de producción.
 - **Consistencia en Entornos**: Use herramientas de automatización y contenedores para asegurar que los entornos de desarrollo, pruebas y producción sean lo más similares posible.

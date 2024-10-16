@@ -1,3 +1,8 @@
+---
+sidebar_position: 1
+sidebar_label: Inicio
+---
+
 # Scaffolding de Arquitectura Limpia en Python para Microservicios en la Nube
 
 Bienvenido al **Scaffolding de Arquitectura Limpia en Python**, un proyecto diseñado para proporcionar una base sólida y estructurada en el desarrollo de microservicios escalables y mantenibles, aplicando los principios de la Arquitectura Limpia propuestos por Robert C. Martin.

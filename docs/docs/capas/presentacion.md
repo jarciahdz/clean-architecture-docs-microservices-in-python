@@ -1,3 +1,8 @@
+---
+sidebar_position: 4
+sidebar_label: Presentación
+---
+
 # Capa de Presentación
 
 La **Capa de Presentación** es la responsable de gestionar la interacción entre el usuario o cliente y la aplicación. Esta capa expone la funcionalidad del sistema a través de interfaces como APIs RESTful, interfaces gráficas de usuario (GUIs) o interfaces de línea de comandos (CLIs).
@@ -30,7 +35,9 @@ app/
 ```
 
 ## Ejemplos
+
 ### Controlador
+
 #### your_controller.py
 
 ```python
@@ -63,6 +70,7 @@ class YourController:
 ```
 
 ### Configuración del Framework
+
 #### flask_app.py
 
 ```python
@@ -84,8 +92,8 @@ if __name__ == '__main__':
 
 ```
 
-
 ## Beneficios
+
 - **Interfaz Consistente**: Proporciona una interfaz uniforme para que los clientes interactúen con la aplicación.
 
 - **Separación de Preocupaciones**: Aísla las responsabilidades de presentación y protocolo de comunicación de la lógica de negocio.
@@ -93,6 +101,7 @@ if __name__ == '__main__':
 - **Escalabilidad**: Facilita la adición de nuevos puntos de entrada o la adaptación a nuevos canales de comunicación.
 
 ## Capas
+
 - [Dominio](dominio.md)
 - [Aplicación](presentacion.md)
 - [Infraestructura](infraestructura.md)

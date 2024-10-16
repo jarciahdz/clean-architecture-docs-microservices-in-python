@@ -1,3 +1,8 @@
+---
+sidebar_position: 7
+sidebar_label: CI/CD
+---
+
 # Integración Continua y Despliegue Continuo (CI/CD)
 
 La implementación de una estrategia robusta de **Integración Continua (CI)** y **Despliegue Continuo (CD)** es esencial para garantizar la calidad, confiabilidad y eficiencia en el ciclo de vida del desarrollo de software. Este proyecto utiliza **Azure DevOps** como plataforma principal para orquestar las canalizaciones de CI/CD, y considera despliegues tanto en **Azure** como en **AWS** para aprovechar las fortalezas de ambas nubes.
@@ -73,41 +78,53 @@ steps:
 ```
 
 ### Explicación de la Canalización
+
 - **trigger**: Configura la canalización para que se ejecute en las ramas especificadas (main y develop).
 - **pool**: Especifica el agente de compilación a utilizar (ubuntu-latest).
 - **variables**: Define variables globales, como la versión de Python.
 - **steps**: Lista de tareas a ejecutar:
-    - **UsePythonVersion**: Configura la versión de Python en el agente.
-    - **Instalar dependencias**: Actualiza pip e instala las dependencias del proyecto.
-    - **Ejecutar pruebas**: Ejecuta las pruebas utilizando pytest y genera un archivo de resultados en formato JUnit.
-    - **Publicar resultados de pruebas**: Publica los resultados para que puedan ser visualizados en Azure DevOps.
-    - **Publicar artefactos de compilación**: Guarda los artefactos generados durante la compilación para su uso posterior en la canalización de CD.
 
+  - **UsePythonVersion**: Configura la versión de Python en el agente.
+  - **Instalar dependencias**: Actualiza pip e instala las dependencias del proyecto.
+  - **Ejecutar pruebas**: Ejecuta las pruebas utilizando pytest y genera un archivo de resultados en formato JUnit.
+  - **Publicar resultados de pruebas**: Publica los resultados para que puedan ser visualizados en Azure DevOps.
+  - **Publicar artefactos de compilación**: Guarda los artefactos generados durante la compilación para su uso posterior en la canalización de CD.
 
 ### 3. Configuración de Variables de Entorno
+
 En la sección de variables de la canalización, configure las variables necesarias, como credenciales o configuraciones específicas del entorno.
 Utilice variables secretas para manejar información sensible, asegurándose de que estén protegidas y no se expongan en los logs.
 
 ## Configuración de la Canalización de Despliegue Continuo (CD)
+
 La canalización de CD automatiza el proceso de despliegue de la aplicación a los entornos correspondientes (desarrollo, pruebas, producción).
 
 ### 1. Creación de una Release Pipeline
+
 Navegue a la sección "Releases" en Azure DevOps y seleccione "Nueva canalización".
 Elija "Empty Job" para comenzar desde cero o seleccione una plantilla según sus necesidades.
+
 ### 2. Definición de las Etapas de Despliegue
+
 - **Desarrollo**: Primera etapa donde se despliega la aplicación en un entorno de desarrollo para pruebas iniciales.
 - **Pruebas**: Etapa donde se realizan pruebas más exhaustivas, incluyendo pruebas de integración y aceptación.
 - **Producción**: Etapa final donde la aplicación se despliega al entorno de producción.
+
 ### 3. Configuración de Tareas de Despliegue
+
 En esta sección se abordará la configuración de las tareas de despliegue para ambos entornos en la nube: Azure y AWS.
 
 #### Despliegue en Azure
+
 Para desplegar la aplicación en Azure, se utilizarán servicios como Azure Container Instances (ACI) o Azure Kubernetes Service (AKS), dependiendo de las necesidades.
 
 ##### Ejemplo de Tarea de Despliegue en Azure
+
 ### 4. Configuración de Gates y Aprobaciones
+
 Establezca gates y aprobaciones manuales entre las etapas para controlar el flujo de despliegue.
 Configure notificaciones para informar a los equipos relevantes sobre el progreso y estado de los despliegues.
+
 ```yaml
 - task: AzureCLI@2
   inputs:
@@ -145,12 +162,15 @@ Configure notificaciones para informar a los equipos relevantes sobre el progres
 ```
 
 #### Despliegue en AWS
+
 Para el despliegue en AWS, se pueden utilizar servicios como Amazon Elastic Container Service (ECS) o Amazon Elastic Kubernetes Service (EKS).
 
 ##### Configuración de Credenciales AWS
+
 Antes de ejecutar tareas en AWS, es necesario configurar las credenciales de acceso. Esto se puede hacer mediante variables de entorno o utilizando el servicio de Azure Key Vault para almacenar secretos.
 
 ##### Ejemplo de Tarea de Despliegue en AWS
+
 ```yaml
 - task: AWSCLI@1
   inputs:
@@ -183,15 +203,16 @@ Antes de ejecutar tareas en AWS, es necesario configurar las credenciales de acc
 
 ## Integración con Azure Key Vault
 
-### Integración con Azure Key Vault
 Para manejar de forma segura las credenciales y secretos necesarios durante el proceso de despliegue, se integra Azure Key Vault en las canalizaciones.
 
 Configuración de Azure Key Vault
+
 - Cree un Azure Key Vault en su suscripción de Azure.
 - Agregue los secretos necesarios, como contraseñas, claves de API y otras credenciales sensibles.
 - Configure las políticas de acceso para permitir que Azure DevOps Pipeline acceda al Key Vault.
 
-#### Uso en la Canalización
+### Uso en la Canalización
+
 Agregue una tarea en el azure-pipelines.yml para obtener los secretos del Key Vault:
 
 ```yaml
@@ -203,9 +224,11 @@ Agregue una tarea en el azure-pipelines.yml para obtener los secretos del Key Va
     RunAsPreJob: true
   displayName: 'Descargar secretos desde Azure Key Vault'
 ```
+
 Con esta configuración, los secretos estarán disponibles como variables en la canalización y pueden ser utilizados en los scripts de despliegue.
 
 ## Buenas Prácticas
+
 - **Versionado Semántico**: Utilice un esquema de versionado consistente para las builds y despliegues.
 - **Principio de Menor Privilegio**: Configure los permisos de acceso de las canalizaciones y servicios con el mínimo necesario.
 - **Validación en Pull Requests**: Configure políticas de rama que requieran la aprobación y el paso de las pruebas antes de fusionar cambios.
@@ -217,6 +240,7 @@ Con esta configuración, los secretos estarán disponibles como variables en la 
 - **Infraestructura como Código**: Utilice herramientas como Terraform o Azure Resource Manager (ARM) Templates para definir y gestionar la infraestructura de forma declarativa.
 
 ## Recursos Adicionales
+
 - [Documentación de Azure DevOps](https://learn.microsoft.com/es-es/azure/devops/?view=azure-devops)
 - [Prácticas recomendadas para CI/CD en Azure](https://learn.microsoft.com/en-us/azure/devops/pipelines/architectures/devops-pipelines-baseline-architecture?view=azure-devops)
 - [Integración de Azure Key Vault con Azure DevOps](https://learn.microsoft.com/en-us/azure/devops/pipelines/release/azure-key-vault?view=azure-devops&tabs=classic)

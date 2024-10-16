@@ -1,3 +1,7 @@
+---
+sidebar_position: 9
+---
+
 # Conclusión
 
 La implementación de una **Arquitectura Limpia** en el desarrollo de microservicios con Python proporciona una base sólida para construir sistemas robustos, escalables y mantenibles. A lo largo de este proyecto, hemos explorado los principios fundamentales de esta arquitectura y cómo aplicarlos de manera efectiva en un entorno de desarrollo moderno.
@@ -19,4 +23,3 @@ Este scaffolding no solo sirve como punto de partida para proyectos actuales, si
 - **Automatización Avanzada**: Implementar pruebas automatizadas más complejas, como pruebas de carga y rendimiento, y considerar estrategias de despliegue azul-verde o canario.
 - **Monitoreo y Observabilidad**: Integrar soluciones de monitoreo y logging avanzadas para obtener visibilidad en tiempo real del comportamiento de la aplicación en producción.
 - **Seguridad**: Fortalecer la seguridad en todas las capas, incluyendo prácticas como el análisis de vulnerabilidades y la gestión de secretos más robusta.
-
